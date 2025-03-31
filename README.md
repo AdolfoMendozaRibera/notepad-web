@@ -26,3 +26,21 @@ cd backend && npm start
 
 # En otra terminal:
 cd frontend && npm start
+
+# Notepad Fullstack App
+
+## Estructura
+- `frontend/`: Aplicación React/Vite
+- `backend/`: Servidor Node.js/Express (o tu tecnología)
+
+## Desarrollo
+```bash
+# Frontend
+cd frontend
+npm install
+npm run dev
+
+# Backend
+cd ../backend
+npm install
+npm start
