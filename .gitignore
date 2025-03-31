@@ -1,0 +1,13 @@
+# Dependencias
+node_modules/
+.env
+dist/
+build/
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db

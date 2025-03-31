@@ -1,0 +1,94 @@
+.group-of-notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-large, 20px);
+  min-height: calc(100vh - 40px);
+  padding: 0 10px; /* Padding lateral para móviles */
+}
+
+.group-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium, 15px);
+  background: white;
+  padding: var(--padding-large, 20px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-top: 10px; /* Espacio superior en móviles */
+}
+
+.group-selector-wrapper {
+  width: 100%;
+}
+
+.group-title-display {
+  font-size: clamp(1.5rem, 4vw, 1.8rem); /* Tamaño responsive */
+  font-weight: 600;
+  color: var(--dark);
+  word-break: break-word;
+  padding: 10px 0;
+  margin: 0;
+  line-height: 1.3;
+  display: none;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+
+.group-title-display.visible {
+  display: block;
+}
+
+.notes-main {
+  flex: 1;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: var(--padding-large, 25px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Media Queries mejoradas */
+@media (max-width: 768px) {
+  .group-of-notes-container {
+    gap: var(--gap-small, 10px);
+    height: auto;
+  }
+  
+  .group-header, .notes-main {
+    padding: var(--padding-medium, 15px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .notes-grid {
+    grid-template-columns: repeat(4, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 900px) {
+  .notes-grid {
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* Reducido mínimo */
+  }
+}
+
+@media (max-width: 899px) and (min-width: 600px) {
+  .notes-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr)); /* Reducido mínimo */
+  }
+}
+
+@media (max-width: 599px) {
+  .notes-grid {
+    grid-template-columns: 1fr; /* Una columna en móviles pequeños */
+  }
+}

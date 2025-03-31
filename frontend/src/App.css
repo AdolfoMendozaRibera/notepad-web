@@ -1,0 +1,126 @@
+:root {
+  /* Colores principales */
+  --primary: #4361ee;
+  --primary-rgb: 67, 97, 238;
+  --primary-light: #4895ef;
+  --primary-dark: #3a56d4;
+  --secondary: #3f37c9;
+  --dark: #1b263b;
+  --light: #f8f9fa;
+  --gray: #adb5bd;
+  
+  /* Colores de estado */
+  --success: #4cc9f0;
+  --danger: #f72585;
+  --danger-rgb: 247, 37, 133;
+  --warning: #f8961e;
+  
+  /* Neutrales */
+  --bg-color: #f5f7ff;
+  --text-primary: var(--dark);
+  --text-secondary: #4a5568;
+  --border-color: #e2e8f0;
+  
+  /* Tamaños */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+  
+  /* Transiciones */
+  --transition: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+  
+  /* Breakpoints */
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+  
+  /* Tipografía */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+}
+
+/* Reset mejorado */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+               Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  padding: 1.25rem;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Enfoque accesible */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Contenedor principal */
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Estados */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: var(--primary);
+  font-size: var(--font-size-lg);
+}
+
+.error {
+  padding: 1rem;
+  background-color: rgba(var(--danger-rgb), 0.1);
+  color: var(--danger);
+  border-radius: var(--border-radius);
+  margin: 1.25rem 0;
+  text-align: center;
+  border-left: 4px solid var(--danger);
+}
+
+/* Media Queries base */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

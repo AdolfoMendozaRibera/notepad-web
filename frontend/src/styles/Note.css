@@ -1,0 +1,220 @@
+.note {
+  transition: var(--transition);
+}
+
+.note:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  z-index: 1; /* Elevar nota al hover para superponer sombra */
+}
+
+.note.editing {
+  border-left-color: var(--warning);
+  background-color: rgba(var(--warning-rgb), 0.05);
+}
+
+.note-title {
+  font-size: clamp(1rem, 1.5vw, 1.1rem); /* Tamaño responsive */
+  margin-bottom: 0.75rem;
+  color: var(--dark);
+  font-weight: 600;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.note-content {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  word-break: break-word;
+  overflow: hidden;
+  hyphens: auto;
+}
+
+.note-content-preview {
+  min-height: 12.5rem; /* 200px */
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.action-button {
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  background: transparent;
+}
+
+.action-button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-sm);
+}
+
+.action-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Botones específicos */
+.expand-button {
+  color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.expand-button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.delete-button {
+  color: var(--danger);
+  background-color: rgba(var(--danger-rgb), 0.1);
+}
+
+.delete-button:hover {
+  background-color: var(--danger);
+  color: white;
+}
+
+/* Modal */
+.note-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.note-modal {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  width: min(90%, 45rem); /* Más ancho en pantallas grandes */
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+}
+
+.note-modal-header {
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  gap: 1rem;
+}
+
+.modal-title-input {
+  flex: 1;
+  border: none;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  padding: 0.5rem 0;
+}
+
+.modal-title-input:focus {
+  outline: none;
+  box-shadow: 0 2px 0 0 var(--primary);
+}
+
+.note-modal-content {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 1.5vw, 1rem);
+}
+
+.modal-content-input {
+  width: 100%;
+  min-height: 20vh;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  line-height: inherit;
+  padding: 0.5rem;
+  white-space: pre-wrap;
+}
+
+.note-modal-actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  flex-wrap: wrap; /* Para móviles */
+}
+
+.modal-action-button {
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 7rem; /* Ancho mínimo consistente */
+  justify-content: center;
+}
+
+/* Estados de botones del modal */
+.modal-action-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Media Queries para móviles */
+@media (max-width: 480px) {
+  .note {
+    min-height: 11rem; /* Más compacto en móviles */
+  }
+  
+  .note-content-preview {
+    min-height: 9rem;
+    -webkit-line-clamp: 6;
+  }
+  
+  .note-modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .note-modal-actions {
+    justify-content: stretch;
+  }
+  
+  .modal-action-button {
+    flex: 1;
+  }
+}
+
+/* Animaciones */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
